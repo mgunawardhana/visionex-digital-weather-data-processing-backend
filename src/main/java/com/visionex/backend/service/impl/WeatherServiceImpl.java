@@ -26,6 +26,10 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public ResponseEntity<APIResponse> getWeatherByCity(String city) {
+       if(city == null || city.isEmpty()) {
+            throw new IllegalArgumentException("City name cannot be empty");
+        }
+
         try {
             CompletableFuture<WeatherEntry> weatherFuture = weatherApiClient.fetchWeatherDetailsByLocationName(city);
             WeatherEntry weatherEntry = weatherFuture.join();

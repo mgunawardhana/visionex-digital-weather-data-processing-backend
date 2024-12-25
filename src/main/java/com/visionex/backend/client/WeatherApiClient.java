@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -26,7 +27,7 @@ public class WeatherApiClient {
 
     @Async
     @Cacheable("weatherSummary")
-    public CompletableFuture<WeatherEntry> fetchWeatherDetailsByLocationName(String locationName) {
+    public CompletableFuture<WeatherEntry> fetchWeatherDetailsByLocationName(String locationName) throws WebClientResponseException {
         log.info("Fetching weather data asynchronously for location: {}", locationName);
         WeatherEntry weatherEntry = webClient.get()
                 .uri(uriBuilder -> uriBuilder
