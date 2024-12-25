@@ -1,4 +1,4 @@
-package com.visionex.backend.model;
+package com.visionex.backend.model.weatherdata;
 
 import lombok.Data;
 import lombok.ToString;

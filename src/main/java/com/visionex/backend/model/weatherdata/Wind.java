@@ -1,4 +1,4 @@
-package com.visionex.backend.model;
+package com.visionex.backend.model.weatherdata;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Coord {
+public class Wind {
 
-        private double lon;
-        private double lat;
+    private double speed;
+    private int deg;
 }

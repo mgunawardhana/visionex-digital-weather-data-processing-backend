@@ -1,5 +1,6 @@
 package com.visionex.backend.controller;
 
+import com.visionex.backend.model.APIResponse;
 import com.visionex.backend.service.WeatherService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,11 @@ public class WeatherController {
     private final WeatherService weatherService;
 
     @GetMapping("/summary/{city}")
-    public ResponseEntity<?> getInstructor(@PathVariable String city) {
-        System.out.println("City: " + city);
-        return weatherService.getWeatherByCity(city);
+    public ResponseEntity<APIResponse> getWeatherSummary(@PathVariable String city) {
+        log.info("Fetching weather data for city: {}", city);
+        var response = weatherService.getWeatherByCity(city);
+        log.info("Weather data fetched successfully for city: {}", city);
+        return response;
     }
-
 }
+
