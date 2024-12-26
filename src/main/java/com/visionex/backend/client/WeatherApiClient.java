@@ -16,6 +16,8 @@ import java.util.concurrent.CompletableFuture;
 @Component
 public class WeatherApiClient {
 
+    // German, Ukraine, Japan, China , Russia
+
     @Value("${API_KEY}")
     private String apiKey;
 
